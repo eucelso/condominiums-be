@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cond_owners",
+  "info": {
+    "singularName": "cond-owner",
+    "pluralName": "cond-owners",
+    "displayName": "Condominium owner",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "cellphone": {
+      "type": "string"
+    },
+    "condominium_unit": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cond-unit.cond-unit",
+      "inversedBy": "condominium_owner"
+    },
+    "condominium_blocks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::cond-block.cond-block",
+      "mappedBy": "condominium_owner"
+    }
+  }
+}

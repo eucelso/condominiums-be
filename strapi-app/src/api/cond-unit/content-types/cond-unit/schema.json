@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cond_units",
+  "info": {
+    "singularName": "cond-unit",
+    "pluralName": "cond-units",
+    "displayName": "Condominium unit",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "condominium_blocks": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::cond-block.cond-block",
+      "mappedBy": "condominium_units"
+    },
+    "condominium_owner": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cond-owner.cond-owner",
+      "mappedBy": "condominium_unit"
+    }
+  }
+}

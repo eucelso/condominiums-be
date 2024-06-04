@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cond_blocks",
+  "info": {
+    "singularName": "cond-block",
+    "pluralName": "cond-blocks",
+    "displayName": "Condominium block",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "code": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "condominium_units": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::cond-unit.cond-unit",
+      "inversedBy": "condominium_blocks"
+    },
+    "condominium_owner": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::cond-owner.cond-owner",
+      "inversedBy": "condominium_blocks"
+    }
+  }
+}
