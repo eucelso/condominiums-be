@@ -4,7 +4,7 @@
   "info": {
     "singularName": "cond-unit",
     "pluralName": "cond-units",
-    "displayName": "Condominium unit",
+    "displayName": "Unidades",
     "description": ""
   },
   "options": {
@@ -21,11 +21,11 @@
       "target": "api::cond-block.cond-block",
       "mappedBy": "condominium_units"
     },
-    "condominium_owner": {
+    "condominium_owners": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToMany",
       "target": "api::cond-owner.cond-owner",
-      "mappedBy": "condominium_unit"
+      "inversedBy": "condominium_units"
     }
   }
 }

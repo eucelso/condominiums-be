@@ -4,7 +4,7 @@
   "info": {
     "singularName": "cond-block",
     "pluralName": "cond-blocks",
-    "displayName": "Condominium block",
+    "displayName": "Blocos",
     "description": ""
   },
   "options": {
@@ -24,9 +24,9 @@
       "target": "api::cond-unit.cond-unit",
       "inversedBy": "condominium_blocks"
     },
-    "condominium_owner": {
+    "condominium_owners": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::cond-owner.cond-owner",
       "inversedBy": "condominium_blocks"
     }

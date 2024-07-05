@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "advertisings",
+  "info": {
+    "singularName": "advertising",
+    "pluralName": "advertisings",
+    "displayName": "Publicidade",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

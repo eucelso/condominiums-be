@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cond_companies",
+  "info": {
+    "singularName": "cond-company",
+    "pluralName": "cond-companies",
+    "displayName": "Empresa",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "condomino": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cond-owner.cond-owner",
+      "mappedBy": "empresa"
+    },
+    "opening_hours": {
+      "type": "string"
+    },
+    "cellphone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext",
+      "maxLength": 400
+    }
+  }
+}

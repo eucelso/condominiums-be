@@ -788,12 +788,82 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAdvertisingAdvertising extends Schema.CollectionType {
+  collectionName: 'advertisings';
+  info: {
+    singularName: 'advertising';
+    pluralName: 'advertisings';
+    displayName: 'Publicidade';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    image: Attribute.Media<'images'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::advertising.advertising',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::advertising.advertising',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCategoryCategory extends Schema.CollectionType {
+  collectionName: 'categories';
+  info: {
+    singularName: 'category';
+    pluralName: 'categories';
+    displayName: 'Categoria';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    condominium_owners: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::cond-owner.cond-owner'
+    >;
+    term_url: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCondBlockCondBlock extends Schema.CollectionType {
   collectionName: 'cond_blocks';
   info: {
     singularName: 'cond-block';
     pluralName: 'cond-blocks';
-    displayName: 'Condominium block';
+    displayName: 'Blocos';
     description: '';
   };
   options: {
@@ -807,9 +877,9 @@ export interface ApiCondBlockCondBlock extends Schema.CollectionType {
       'manyToMany',
       'api::cond-unit.cond-unit'
     >;
-    condominium_owner: Attribute.Relation<
+    condominium_owners: Attribute.Relation<
       'api::cond-block.cond-block',
-      'manyToOne',
+      'manyToMany',
       'api::cond-owner.cond-owner'
     >;
     createdAt: Attribute.DateTime;
@@ -830,12 +900,55 @@ export interface ApiCondBlockCondBlock extends Schema.CollectionType {
   };
 }
 
+export interface ApiCondCompanyCondCompany extends Schema.CollectionType {
+  collectionName: 'cond_companies';
+  info: {
+    singularName: 'cond-company';
+    pluralName: 'cond-companies';
+    displayName: 'Empresa';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    condomino: Attribute.Relation<
+      'api::cond-company.cond-company',
+      'oneToOne',
+      'api::cond-owner.cond-owner'
+    >;
+    opening_hours: Attribute.String;
+    cellphone: Attribute.String;
+    email: Attribute.String;
+    description: Attribute.RichText &
+      Attribute.SetMinMaxLength<{
+        maxLength: 400;
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::cond-company.cond-company',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::cond-company.cond-company',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCondOwnerCondOwner extends Schema.CollectionType {
   collectionName: 'cond_owners';
   info: {
     singularName: 'cond-owner';
     pluralName: 'cond-owners';
-    displayName: 'Condominium owner';
+    displayName: 'Cond\u00F3minos';
     description: '';
   };
   options: {
@@ -845,15 +958,39 @@ export interface ApiCondOwnerCondOwner extends Schema.CollectionType {
     name: Attribute.String;
     email: Attribute.Email;
     cellphone: Attribute.String;
-    condominium_unit: Attribute.Relation<
+    condominium_units: Attribute.Relation<
       'api::cond-owner.cond-owner',
-      'oneToOne',
+      'manyToMany',
       'api::cond-unit.cond-unit'
     >;
     condominium_blocks: Attribute.Relation<
       'api::cond-owner.cond-owner',
-      'oneToMany',
+      'manyToMany',
       'api::cond-block.cond-block'
+    >;
+    vehicles: Attribute.Relation<
+      'api::cond-owner.cond-owner',
+      'oneToMany',
+      'api::vehicle.vehicle'
+    >;
+    birthday: Attribute.Date;
+    cpf: Attribute.String;
+    logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    thumbnail: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    empresa: Attribute.Relation<
+      'api::cond-owner.cond-owner',
+      'oneToOne',
+      'api::cond-company.cond-company'
+    >;
+    sala: Attribute.Relation<
+      'api::cond-owner.cond-owner',
+      'oneToOne',
+      'api::room.room'
+    >;
+    categories: Attribute.Relation<
+      'api::cond-owner.cond-owner',
+      'manyToMany',
+      'api::category.category'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -878,7 +1015,7 @@ export interface ApiCondUnitCondUnit extends Schema.CollectionType {
   info: {
     singularName: 'cond-unit';
     pluralName: 'cond-units';
-    displayName: 'Condominium unit';
+    displayName: 'Unidades';
     description: '';
   };
   options: {
@@ -891,9 +1028,9 @@ export interface ApiCondUnitCondUnit extends Schema.CollectionType {
       'manyToMany',
       'api::cond-block.cond-block'
     >;
-    condominium_owner: Attribute.Relation<
+    condominium_owners: Attribute.Relation<
       'api::cond-unit.cond-unit',
-      'oneToOne',
+      'manyToMany',
       'api::cond-owner.cond-owner'
     >;
     createdAt: Attribute.DateTime;
@@ -907,6 +1044,73 @@ export interface ApiCondUnitCondUnit extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::cond-unit.cond-unit',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiRoomRoom extends Schema.CollectionType {
+  collectionName: 'rooms';
+  info: {
+    singularName: 'room';
+    pluralName: 'rooms';
+    displayName: 'Sala';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Numero: Attribute.String;
+    condomino: Attribute.Relation<
+      'api::room.room',
+      'oneToOne',
+      'api::cond-owner.cond-owner'
+    >;
+    floor: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::room.room', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::room.room', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiVehicleVehicle extends Schema.CollectionType {
+  collectionName: 'vehicles';
+  info: {
+    singularName: 'vehicle';
+    pluralName: 'vehicles';
+    displayName: 'Veiculos';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    brand: Attribute.String;
+    plate: Attribute.String;
+    color: Attribute.String;
+    condominium_owner: Attribute.Relation<
+      'api::vehicle.vehicle',
+      'manyToOne',
+      'api::cond-owner.cond-owner'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::vehicle.vehicle',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::vehicle.vehicle',
       'oneToOne',
       'admin::user'
     > &
@@ -932,9 +1136,14 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::advertising.advertising': ApiAdvertisingAdvertising;
+      'api::category.category': ApiCategoryCategory;
       'api::cond-block.cond-block': ApiCondBlockCondBlock;
+      'api::cond-company.cond-company': ApiCondCompanyCondCompany;
       'api::cond-owner.cond-owner': ApiCondOwnerCondOwner;
       'api::cond-unit.cond-unit': ApiCondUnitCondUnit;
+      'api::room.room': ApiRoomRoom;
+      'api::vehicle.vehicle': ApiVehicleVehicle;
     }
   }
 }

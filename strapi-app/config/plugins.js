@@ -1,1 +1,19 @@
-module.exports = () => ({});
+module.exports = ({ env }) => ({
+ 'transformer': {
+    enabled: true,
+    config: {
+      responseTransforms: {
+        removeAttributesKey: true,
+        removeDataKey: true,
+      },
+      requestTransforms : {
+        wrapBodyWithDataKey: true
+      },
+      plugins: {
+        ids: {
+          'slugify': true,
+        }
+      }
+    }
+  },
+});

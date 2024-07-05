@@ -1,0 +1,36 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/roles",
+      "handler": "role.find",
+      "config": {
+        "policies": ["global::isSuperAdminOrClientSuperAdmin"]
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/roles",
+      "handler": "role.create",
+      "config": {
+        "policies": ["global::isSuperAdminOrClientSuperAdmin"]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/users",
+      "handler": "user.find",
+      "config": {
+        "policies": ["global::isSuperAdminOrClientSuperAdmin"]
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/users",
+      "handler": "user.create",
+      "config": {
+        "policies": ["global::isSuperAdminOrClientSuperAdmin"]
+      }
+    }
+  ]
+}

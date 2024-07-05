@@ -1,0 +1,29 @@
+{
+    "kind": "collectionType",
+    "collectionName": "advertisings",
+    "info": {
+      "name": "advertising",
+      "description": ""
+    },
+    "attributes": {
+      "title": {
+        "type": "string",
+        "required": true
+      },
+      "description": {
+        "type": "text",
+        "required": true
+      },
+      "image": {
+        "type": "media",
+        "multiple": false,
+        "required": true,
+        "allowedTypes": ["images"]
+      },
+      "user": {
+        "model": "user",
+        "via": "advertisings"
+      }
+    }
+  }
+  

@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categories",
+  "info": {
+    "singularName": "category",
+    "pluralName": "categories",
+    "displayName": "Categoria",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "condominium_owners": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::cond-owner.cond-owner",
+      "inversedBy": "categories"
+    },
+    "term_url": {
+      "type": "string"
+    }
+  }
+}
