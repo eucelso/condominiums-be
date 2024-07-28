@@ -19,8 +19,10 @@ jobs:
       
     - name: 🔨 Build Project
       run: |
-        npm install
+        npm install --production
+        npm i forever -g
         npm run build
+        node forever start server.js
         
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
