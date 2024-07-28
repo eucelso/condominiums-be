@@ -21,7 +21,6 @@ jobs:
       run: |
         npm install
         npm run build
-        npm run start
         
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -29,5 +28,5 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local_dir: ./www
-        remote_dir: /www
+        local_dir: ./build
+        remote_dir: /build
