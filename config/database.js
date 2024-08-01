@@ -1,20 +1,35 @@
 const path = require('path');
 
-module.exports = ({ env }) => ({
-  connection: {
-    client: 'mysql2',
+module.exports = ({ env }) => {
+  // Adicione este log para verificar as variáveis de ambiente
+  console.log('Database settings:', {
+    host: env('DATABASE_HOST'),
+    port: env.int('DATABASE_PORT'),
+    database: env('DATABASE_NAME'),
+    user: env('DATABASE_USERNAME'),
+    password: env('DATABASE_PASSWORD'),
+    ssl: env.bool('DATABASE_SSL', false),
+    poolMin: env.int('DATABASE_POOL_MIN', 2),
+    poolMax: env.int('DATABASE_POOL_MAX', 10),
+    connectionTimeout: env.int('DATABASE_CONNECTION_TIMEOUT', 60000),
+  });
+
+  return {
     connection: {
-      host: env('DATABASE_MYSQL_HOST'),
-      port: env.int('DATABASE_PORT'),
-      database: env('DATABASE_NAME'),
-      user: env('DATABASE_USERNAME'),
-      password: env('DATABASE_PASSWORD'),
-      ssl: env.bool('DATABASE_SSL', false),
+      client: 'mysql2',
+      connection: {
+        host: env('DATABASE_HOST'),
+        port: env.int('DATABASE_PORT'),
+        database: env('DATABASE_NAME'),
+        user: env('DATABASE_USERNAME'),
+        password: env('DATABASE_PASSWORD'),
+        ssl: env.bool('DATABASE_SSL', false),
+      },
+      pool: {
+        min: env.int('DATABASE_POOL_MIN', 2),
+        max: env.int('DATABASE_POOL_MAX', 10),
+      },
+      acquireConnectionTimeout: env.int('DATABASE_CONNECTION_TIMEOUT', 60000),
     },
-    pool: {
-      min: env.int('DATABASE_POOL_MIN', 2),
-      max: env.int('DATABASE_POOL_MAX', 10),
-    },
-    acquireConnectionTimeout: env.int('DATABASE_CONNECTION_TIMEOUT', 60000),
-  },
-});
+  };
+};
