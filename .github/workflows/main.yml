@@ -20,6 +20,7 @@ jobs:
     - name: 🔨 Build Project
       run: |
         npm install
+        npm install -g pm2
         npm run build
         
     - name: 📂 Sync files
@@ -31,6 +32,7 @@ jobs:
         local_dir: ./build
         remote_dir: /build
 
-    - name: 🔨 Start Project
+    - name: 🚀 Start Strapi
       run: |
-        npm run start
+          pm2 stop strapi || true
+          pm2 start npm --name "strapi" -- run start
