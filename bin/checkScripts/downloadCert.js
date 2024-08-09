@@ -24,8 +24,6 @@ if (proxyHost === '') {
         },
     }
     const req = https.request(options, res => {
-        console.log(`statusCode: ${res.statusCode}`)
-        console.log(`headers: ${JSON.stringify(res.headers)}`)
         let cert = socket.getPeerCertificate(true)
         let certPEM = ''
         let fingerprints = {}
