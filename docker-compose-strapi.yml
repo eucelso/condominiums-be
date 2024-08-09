@@ -1,0 +1,23 @@
+version: "3"
+services:
+  strapi:
+    container_name: strapi
+    build: .
+    image: naskio/strapi:latest-alpine
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./config:/opt/app/config
+      - ./src:/opt/app/src
+      - ./package.json:/opt/package.json
+      - ./yarn.lock:/opt/yarn.lock
+      - ./.env:/opt/app/.env
+      - ./public/uploads:/opt/app/public/uploads
+    ports:
+      - "1337:1337"
+    networks:
+      - strapi
+networks:
+  strapi:
+    name: Strapi
+    driver: bridge
