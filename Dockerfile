@@ -18,6 +18,8 @@ RUN npm run build
 
 # Exponha a porta que o Strapi usa (por padrão 1337)
 EXPOSE 1337
+EXPOSE 8180
+EXPOSE 3307
 
 # Comando para iniciar a aplicação Strapi
 CMD ["npm", "run", "start"]

@@ -10,7 +10,7 @@
         MYSQL_USER: strapi
         MYSQL_PASSWORD: password
       ports:
-        - '3306:3306'
+        - '3307:3306'
       volumes:
         - mysql_data:/var/lib/mysql
       healthcheck:
@@ -27,7 +27,7 @@
         PMA_HOST: mysql
         MYSQL_ROOT_PASSWORD: password
       ports:
-        - '8080:80'
+        - '8180:80'
       depends_on:
         - mysql
 
