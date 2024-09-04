@@ -834,12 +834,12 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    condominium_owners: Attribute.Relation<
-      'api::category.category',
-      'manyToMany',
-      'api::cond-owner.cond-owner'
-    >;
     term_url: Attribute.String;
+    empresas: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::cond-company.cond-company'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -851,48 +851,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::category.category',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiCondBlockCondBlock extends Schema.CollectionType {
-  collectionName: 'cond_blocks';
-  info: {
-    singularName: 'cond-block';
-    pluralName: 'cond-blocks';
-    displayName: 'Blocos';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    code: Attribute.String;
-    name: Attribute.String;
-    condominium_units: Attribute.Relation<
-      'api::cond-block.cond-block',
-      'manyToMany',
-      'api::cond-unit.cond-unit'
-    >;
-    condominium_owners: Attribute.Relation<
-      'api::cond-block.cond-block',
-      'manyToMany',
-      'api::cond-owner.cond-owner'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::cond-block.cond-block',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::cond-block.cond-block',
       'oneToOne',
       'admin::user'
     > &
@@ -925,6 +883,25 @@ export interface ApiCondCompanyCondCompany extends Schema.CollectionType {
       Attribute.SetMinMaxLength<{
         maxLength: 400;
       }>;
+    whatsapp: Attribute.Boolean;
+    telephone: Attribute.String;
+    logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    thumbnail: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    salas: Attribute.Relation<
+      'api::cond-company.cond-company',
+      'manyToMany',
+      'api::room.room'
+    >;
+    torres: Attribute.Relation<
+      'api::cond-company.cond-company',
+      'manyToMany',
+      'api::cond-unit.cond-unit'
+    >;
+    categorias: Attribute.Relation<
+      'api::cond-company.cond-company',
+      'manyToMany',
+      'api::category.category'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -958,39 +935,12 @@ export interface ApiCondOwnerCondOwner extends Schema.CollectionType {
     name: Attribute.String;
     email: Attribute.Email;
     cellphone: Attribute.String;
-    condominium_units: Attribute.Relation<
-      'api::cond-owner.cond-owner',
-      'manyToMany',
-      'api::cond-unit.cond-unit'
-    >;
-    condominium_blocks: Attribute.Relation<
-      'api::cond-owner.cond-owner',
-      'manyToMany',
-      'api::cond-block.cond-block'
-    >;
-    vehicles: Attribute.Relation<
-      'api::cond-owner.cond-owner',
-      'oneToMany',
-      'api::vehicle.vehicle'
-    >;
     birthday: Attribute.Date;
     cpf: Attribute.String;
-    logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    thumbnail: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     empresa: Attribute.Relation<
       'api::cond-owner.cond-owner',
       'oneToOne',
       'api::cond-company.cond-company'
-    >;
-    sala: Attribute.Relation<
-      'api::cond-owner.cond-owner',
-      'oneToOne',
-      'api::room.room'
-    >;
-    categories: Attribute.Relation<
-      'api::cond-owner.cond-owner',
-      'manyToMany',
-      'api::category.category'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1015,7 +965,7 @@ export interface ApiCondUnitCondUnit extends Schema.CollectionType {
   info: {
     singularName: 'cond-unit';
     pluralName: 'cond-units';
-    displayName: 'Unidades';
+    displayName: 'Torres';
     description: '';
   };
   options: {
@@ -1023,15 +973,10 @@ export interface ApiCondUnitCondUnit extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    condominium_blocks: Attribute.Relation<
+    empresas: Attribute.Relation<
       'api::cond-unit.cond-unit',
       'manyToMany',
-      'api::cond-block.cond-block'
-    >;
-    condominium_owners: Attribute.Relation<
-      'api::cond-unit.cond-unit',
-      'manyToMany',
-      'api::cond-owner.cond-owner'
+      'api::cond-company.cond-company'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1064,12 +1009,12 @@ export interface ApiRoomRoom extends Schema.CollectionType {
   };
   attributes: {
     Numero: Attribute.String;
-    condomino: Attribute.Relation<
-      'api::room.room',
-      'oneToOne',
-      'api::cond-owner.cond-owner'
-    >;
     floor: Attribute.String;
+    empresas: Attribute.Relation<
+      'api::room.room',
+      'manyToMany',
+      'api::cond-company.cond-company'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1095,11 +1040,6 @@ export interface ApiVehicleVehicle extends Schema.CollectionType {
     brand: Attribute.String;
     plate: Attribute.String;
     color: Attribute.String;
-    condominium_owner: Attribute.Relation<
-      'api::vehicle.vehicle',
-      'manyToOne',
-      'api::cond-owner.cond-owner'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1138,7 +1078,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::advertising.advertising': ApiAdvertisingAdvertising;
       'api::category.category': ApiCategoryCategory;
-      'api::cond-block.cond-block': ApiCondBlockCondBlock;
       'api::cond-company.cond-company': ApiCondCompanyCondCompany;
       'api::cond-owner.cond-owner': ApiCondOwnerCondOwner;
       'api::cond-unit.cond-unit': ApiCondUnitCondUnit;

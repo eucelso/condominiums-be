@@ -15,14 +15,14 @@
     "Numero": {
       "type": "string"
     },
-    "condomino": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::cond-owner.cond-owner",
-      "inversedBy": "sala"
-    },
     "floor": {
       "type": "string"
+    },
+    "empresas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::cond-company.cond-company",
+      "mappedBy": "salas"
     }
   }
 }

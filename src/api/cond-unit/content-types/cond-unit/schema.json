@@ -4,7 +4,7 @@
   "info": {
     "singularName": "cond-unit",
     "pluralName": "cond-units",
-    "displayName": "Unidades",
+    "displayName": "Torres",
     "description": ""
   },
   "options": {
@@ -15,17 +15,11 @@
     "name": {
       "type": "string"
     },
-    "condominium_blocks": {
+    "empresas": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::cond-block.cond-block",
-      "mappedBy": "condominium_units"
-    },
-    "condominium_owners": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::cond-owner.cond-owner",
-      "inversedBy": "condominium_units"
+      "target": "api::cond-company.cond-company",
+      "mappedBy": "torres"
     }
   }
 }

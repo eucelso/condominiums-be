@@ -33,6 +33,52 @@
     "description": {
       "type": "richtext",
       "maxLength": 400
+    },
+    "whatsapp": {
+      "type": "boolean"
+    },
+    "telephone": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "salas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::room.room",
+      "inversedBy": "empresas"
+    },
+    "torres": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::cond-unit.cond-unit",
+      "inversedBy": "empresas"
+    },
+    "categorias": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "empresas"
     }
   }
 }

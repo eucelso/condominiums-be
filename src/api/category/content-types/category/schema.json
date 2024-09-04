@@ -15,14 +15,14 @@
     "name": {
       "type": "string"
     },
-    "condominium_owners": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::cond-owner.cond-owner",
-      "inversedBy": "categories"
-    },
     "term_url": {
       "type": "string"
+    },
+    "empresas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::cond-company.cond-company",
+      "mappedBy": "categorias"
     }
   }
 }

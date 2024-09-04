@@ -21,69 +21,17 @@
     "cellphone": {
       "type": "string"
     },
-    "condominium_units": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::cond-unit.cond-unit",
-      "mappedBy": "condominium_owners"
-    },
-    "condominium_blocks": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::cond-block.cond-block",
-      "mappedBy": "condominium_owners"
-    },
-    "vehicles": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::vehicle.vehicle",
-      "mappedBy": "condominium_owner"
-    },
     "birthday": {
       "type": "date"
     },
     "cpf": {
       "type": "string"
     },
-    "logo": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "thumbnail": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "empresa": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::cond-company.cond-company",
       "inversedBy": "condomino"
-    },
-    "sala": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::room.room",
-      "mappedBy": "condomino"
-    },
-    "categories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category.category",
-      "mappedBy": "condominium_owners"
     }
   }
 }

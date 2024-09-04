@@ -20,12 +20,6 @@
     },
     "color": {
       "type": "string"
-    },
-    "condominium_owner": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::cond-owner.cond-owner",
-      "inversedBy": "vehicles"
     }
   }
 }
