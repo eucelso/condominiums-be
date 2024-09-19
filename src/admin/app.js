@@ -28,16 +28,37 @@ const config = {
     // 'zh',
   ],
   translations: {
-    en: {
-      "app.components.HomePage.welcome": "Bem vindo"
+    "en": {
+      "app.components.HomePage.welcome": "Bem vindo",
+      'app.components.LeftMenu.navbrand.title': 'Cidade Viva Offices',
+      "app.components.LeftMenu.navbrand.workplace": "Painel Administravivo - TheUrbanPulse",
+      "Auth.form.welcome.title": "Admin Cidade Viva Offices",
+      "Auth.form.welcome.subtitle": "Entre com sua conta",
+      "Auth.link.forgot-password": "Esqueceu sua senha ?",
+    },
+    "pt-BR": {
+      "app.components.HomePage.welcome": "Bem vindo",
+      'app.components.LeftMenu.navbrand.title': 'Cidade Viva Offices',
+      "app.components.LeftMenu.navbrand.workplace": "Painel Administravivo - TheUrbanPulse",
+      "Auth.form.welcome.title": "Admin Cidade Viva Offices",
+      "Auth.form.welcome.subtitle": "Entre com sua conta",
+      "Auth.link.forgot-password": "Esqueceu sua senha ?",
     }
   },
   tutorials: false,
   notifications: { releases: false },
 };
 
+const injectCustomScript = () => {
+  const script = document.createElement('script');
+  script.src = '/custom-homepage.js';
+  script.async = true;
+  document.body.appendChild(script);
+};
+
 const bootstrap = (app) => {
 
+  injectCustomScript();
   const url = "/admin/content-manager";
 
     // Redirect hard /admin navigations to `url`
