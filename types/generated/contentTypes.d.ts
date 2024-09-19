@@ -912,6 +912,10 @@ export interface ApiCondCompanyCondCompany extends Schema.CollectionType {
     social_media: Attribute.Boolean & Attribute.DefaultTo<false>;
     facebook: Attribute.String;
     instagram: Attribute.String;
+    subtitle: Attribute.RichText &
+      Attribute.SetMinMaxLength<{
+        maxLength: 250;
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

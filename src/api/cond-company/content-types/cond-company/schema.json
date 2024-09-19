@@ -94,6 +94,10 @@
     },
     "instagram": {
       "type": "string"
+    },
+    "subtitle": {
+      "type": "richtext",
+      "maxLength": 250
     }
   }
 }
