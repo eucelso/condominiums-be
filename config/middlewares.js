@@ -1,6 +1,20 @@
 module.exports = [
   'strapi::errors',
-  'strapi::security',
+  // 'strapi::security',
+  {
+    name: "strapi::security",
+    config: {
+      contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+          "connect-src": ["'self'", "https:"],
+          "script-src": ["https://cdnjs.cloudflare.com"],
+          "media-src": ["https://cdnjs.cloudflare.com"],
+          "img-src": ["https://cdnjs.cloudflare.com"],
+        },
+      },
+    },
+  },
   'strapi::cors',
   'strapi::poweredBy',
   'strapi::logger',

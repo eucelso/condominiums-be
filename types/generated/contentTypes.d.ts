@@ -877,14 +877,21 @@ export interface ApiCondCompanyCondCompany extends Schema.CollectionType {
       'api::cond-owner.cond-owner'
     >;
     opening_hours: Attribute.String;
-    cellphone: Attribute.String;
+    cellphone: Attribute.String &
+      Attribute.CustomField<'plugin::strapi-phone-validator.phone'>;
     email: Attribute.String;
     description: Attribute.RichText &
       Attribute.SetMinMaxLength<{
-        maxLength: 400;
+        maxLength: 1200;
       }>;
     whatsapp: Attribute.Boolean;
-    telephone: Attribute.String;
+    telephone: Attribute.String &
+      Attribute.CustomField<
+        'plugin::strapi-phone-validator.phone',
+        {
+          country: 'br';
+        }
+      >;
     logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
     thumbnail: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
     salas: Attribute.Relation<
@@ -902,6 +909,9 @@ export interface ApiCondCompanyCondCompany extends Schema.CollectionType {
       'manyToMany',
       'api::category.category'
     >;
+    social_media: Attribute.Boolean & Attribute.DefaultTo<false>;
+    facebook: Attribute.String;
+    instagram: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

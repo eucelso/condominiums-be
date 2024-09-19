@@ -25,20 +25,25 @@
       "type": "string"
     },
     "cellphone": {
-      "type": "string"
+      "type": "customField",
+      "customField": "plugin::strapi-phone-validator.phone"
     },
     "email": {
       "type": "string"
     },
     "description": {
       "type": "richtext",
-      "maxLength": 400
+      "maxLength": 1200
     },
     "whatsapp": {
       "type": "boolean"
     },
     "telephone": {
-      "type": "string"
+      "type": "customField",
+      "options": {
+        "country": "br"
+      },
+      "customField": "plugin::strapi-phone-validator.phone"
     },
     "logo": {
       "type": "media",
@@ -79,6 +84,16 @@
       "relation": "manyToMany",
       "target": "api::category.category",
       "inversedBy": "empresas"
+    },
+    "social_media": {
+      "type": "boolean",
+      "default": false
+    },
+    "facebook": {
+      "type": "string"
+    },
+    "instagram": {
+      "type": "string"
     }
   }
 }
