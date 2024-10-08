@@ -13,7 +13,8 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "condomino": {
       "type": "relation",
@@ -22,49 +23,35 @@
       "mappedBy": "empresa"
     },
     "opening_hours": {
-      "type": "string"
-    },
-    "cellphone": {
-      "type": "customField",
-      "customField": "plugin::strapi-phone-validator.phone"
+      "type": "string",
+      "required": true
     },
     "email": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "description": {
       "type": "richtext",
-      "maxLength": 1200
+      "maxLength": 1200,
+      "required": true
     },
     "whatsapp": {
       "type": "boolean"
     },
-    "telephone": {
-      "type": "customField",
-      "options": {
-        "country": "br"
-      },
-      "customField": "plugin::strapi-phone-validator.phone"
-    },
     "logo": {
       "type": "media",
       "multiple": true,
-      "required": false,
+      "required": true,
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "images"
       ]
     },
     "thumbnail": {
       "type": "media",
       "multiple": true,
-      "required": false,
+      "required": true,
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "images"
       ]
     },
     "salas": {
@@ -95,9 +82,11 @@
     "instagram": {
       "type": "string"
     },
-    "subtitle": {
-      "type": "richtext",
-      "maxLength": 250
+    "cellphone": {
+      "type": "string"
+    },
+    "telephone": {
+      "type": "string"
     }
   }
 }

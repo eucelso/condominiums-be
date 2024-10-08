@@ -870,30 +870,22 @@ export interface ApiCondCompanyCondCompany extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
+    name: Attribute.String & Attribute.Required;
     condomino: Attribute.Relation<
       'api::cond-company.cond-company',
       'oneToOne',
       'api::cond-owner.cond-owner'
     >;
-    opening_hours: Attribute.String;
-    cellphone: Attribute.String &
-      Attribute.CustomField<'plugin::strapi-phone-validator.phone'>;
-    email: Attribute.String;
+    opening_hours: Attribute.String & Attribute.Required;
+    email: Attribute.String & Attribute.Required;
     description: Attribute.RichText &
+      Attribute.Required &
       Attribute.SetMinMaxLength<{
         maxLength: 1200;
       }>;
     whatsapp: Attribute.Boolean;
-    telephone: Attribute.String &
-      Attribute.CustomField<
-        'plugin::strapi-phone-validator.phone',
-        {
-          country: 'br';
-        }
-      >;
-    logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
-    thumbnail: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    logo: Attribute.Media<'images', true> & Attribute.Required;
+    thumbnail: Attribute.Media<'images', true> & Attribute.Required;
     salas: Attribute.Relation<
       'api::cond-company.cond-company',
       'manyToMany',
@@ -912,10 +904,8 @@ export interface ApiCondCompanyCondCompany extends Schema.CollectionType {
     social_media: Attribute.Boolean & Attribute.DefaultTo<false>;
     facebook: Attribute.String;
     instagram: Attribute.String;
-    subtitle: Attribute.RichText &
-      Attribute.SetMinMaxLength<{
-        maxLength: 250;
-      }>;
+    cellphone: Attribute.String;
+    telephone: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
