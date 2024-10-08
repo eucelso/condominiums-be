@@ -929,7 +929,7 @@ export interface ApiCondOwnerCondOwner extends Schema.CollectionType {
   info: {
     singularName: 'cond-owner';
     pluralName: 'cond-owners';
-    displayName: 'Cond\u00F3minos';
+    displayName: 'Cond\u00F4mino';
     description: '';
   };
   options: {
