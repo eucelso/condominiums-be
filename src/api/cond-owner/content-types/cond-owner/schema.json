@@ -13,19 +13,23 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "email": {
-      "type": "email"
+      "type": "email",
+      "required": true
     },
     "cellphone": {
       "type": "string"
     },
     "birthday": {
-      "type": "date"
+      "type": "date",
+      "required": true
     },
     "cpf": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "empresa": {
       "type": "relation",

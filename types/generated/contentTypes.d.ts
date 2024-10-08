@@ -936,11 +936,11 @@ export interface ApiCondOwnerCondOwner extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
-    email: Attribute.Email;
+    name: Attribute.String & Attribute.Required;
+    email: Attribute.Email & Attribute.Required;
     cellphone: Attribute.String;
-    birthday: Attribute.Date;
-    cpf: Attribute.String;
+    birthday: Attribute.Date & Attribute.Required;
+    cpf: Attribute.String & Attribute.Required;
     empresa: Attribute.Relation<
       'api::cond-owner.cond-owner',
       'oneToOne',
