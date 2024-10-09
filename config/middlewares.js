@@ -1,6 +1,15 @@
 module.exports = [
+  
   'strapi::errors',
   'strapi::security',
+  {
+    settings: {
+      cors: {
+        origin: ['*'],
+        headers: ['*'],
+      },
+    },
+  },
   // {
   //   name: "strapi::security",
   //   config: {
@@ -23,4 +32,5 @@ module.exports = [
   'strapi::session',
   'strapi::favicon',
   'strapi::public',
+  
 ];
