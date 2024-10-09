@@ -16,6 +16,18 @@ module.exports = [
   //     },
   //   },
   // },
+
+  {
+    name: 'strapi::security',
+    config: {
+      contentSecurityPolicy: {
+        directives: {
+          'script-src': ["'self'", "'unsafe-inline'", 'cdn.jsdelivr.net'],
+          'img-src': ["'self'", 'data:', 'cdn.jsdelivr.net', 'strapi.io', 'miniobucket.urbanpulse.app.br'],
+        },
+      }
+    },
+  },
   'strapi::cors',
   'strapi::poweredBy',
   'strapi::logger',
