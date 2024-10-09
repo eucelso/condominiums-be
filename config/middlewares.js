@@ -16,7 +16,6 @@ module.exports = [
   //     },
   //   },
   // },
-
   // {
   //   name: 'strapi::security',
   //   config: {
