@@ -20,10 +20,11 @@ module.exports = [
     name: 'strapi::security',
     config: {
       contentSecurityPolicy: {
+        useDefaults: true,
         directives: {
           'connect-src': ["'self'", 'https:'],
-          'img-src': ["'self'", 'data:', 'blob:', `https://miniobucket.urbanpulse.app.br`],
-          'media-src': ["'self'", 'data:', 'blob:', `https://miniobucket.urbanpulse.app.br`],
+          'img-src': ["'self'", 'data:', 'blob:', `https://${process.env.MINIO_ENDPOINT}.s3.amazonaws.com`, "dl.airtable.com", "market-assets.strapi.io" ],
+          'media-src': ["'self'", 'data:', 'blob:', `https://${process.env.MINIO_ENDPOINT}.s3.amazonaws.com`, "dl.airtable.com", "market-assets.strapi.io" ],
           upgradeInsecureRequests: null,
         },
       }
