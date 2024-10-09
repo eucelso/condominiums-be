@@ -17,34 +17,58 @@ module.exports = [
   //   },
   // },
   {
-    name: 'strapi::security',
+    name: "strapi::security",
     config: {
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'connect-src': ["'self'", 'https:'],
-          'img-src': [
-            "'self'", 
-            'data:', 
-            'blob:', 
-            `https://${process.env.MINIO_ENDPOINT}`, 
-            "dl.airtable.com", 
-            "market-assets.strapi.io",
-            "cloudflare.com"
+          "connect-src": ["'self'", "https:"],
+          "img-src": [
+            "'self'",
+            "data:",
+            "blob:",
+            "https://miniobucket.urbanpulse.app.br",
           ],
-          'media-src': [
-            "'self'", 
-            'data:', 
-            'blob:', 
-            `https://${process.env.MINIO_ENDPOINT}`, 
-            "dl.airtable.com",
-            "market-assets.strapi.io"
+          "media-src": [
+            "'self'",
+            "data:",
+            "blob:",
+            "https://miniobucket.urbanpulse.app.br",
           ],
           upgradeInsecureRequests: null,
         },
-      }
+      },
     },
   },
+  // {
+  //   name: 'strapi::security',
+  //   config: {
+  //     contentSecurityPolicy: {
+  //       useDefaults: true,
+  //       directives: {
+  //         'connect-src': ["'self'", 'https:'],
+  //         'img-src': [
+  //           "'self'", 
+  //           'data:', 
+  //           'blob:', 
+  //           `https://miniobucket.urbanpulse.app.br`, 
+  //           "dl.airtable.com", 
+  //           "market-assets.strapi.io",
+  //           "cloudflare.com"
+  //         ],
+  //         'media-src': [
+  //           "'self'", 
+  //           'data:', 
+  //           'blob:', 
+  //           `https://miniobucket.urbanpulse.app.br`, 
+  //           "dl.airtable.com",
+  //           "market-assets.strapi.io"
+  //         ],
+  //         upgradeInsecureRequests: null,
+  //       },
+  //     }
+  //   },
+  // },
   'strapi::cors',
   'strapi::poweredBy',
   'strapi::logger',
