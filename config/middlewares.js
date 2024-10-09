@@ -22,8 +22,10 @@ module.exports = [
     config: {
       contentSecurityPolicy: {
         directives: {
-          'script-src': ["'self'", "'unsafe-inline'", 'cdn.jsdelivr.net'],
-          'img-src': ["'self'", 'data:', 'cdn.jsdelivr.net', 'strapi.io', 'miniobucket.urbanpulse.app.br'],
+          'connect-src': ["'self'", 'https:'],
+          'img-src': ["'self'", 'data:', 'blob:', `https://miniobucket.urbanpulse.app.br`],
+          'media-src': ["'self'", 'data:', 'blob:', `https://miniobucket.urbanpulse.app.br`],
+          upgradeInsecureRequests: null,
         },
       }
     },
