@@ -1,13 +1,11 @@
 module.exports = ({ env }) => ({
-  upload: {
-    config: {
-      provider: 'strapi-provider-upload-ts-minio',
-      providerOptions: {
-        accessKey: env('MINIO_ACCESS_KEY'),
-        secretKey: env('MINIO_SECRET_KEY'),
-        bucket: env('MINIO_BUCKET'),
-        endPoint: env('MINIO_ENDPOINT'),
-      },
+  'upload': {
+    provider: 'strapi-provider-upload-ts-minio',
+    providerOptions: {
+      accessKey: env('MINIO_ACCESS_KEY'),
+      secretKey: env('MINIO_SECRET_KEY'),
+      bucket: env('MINIO_BUCKET'),
+      endPoint: env('MINIO_ENDPOINT'),
     },
   },
  'transformer': {
