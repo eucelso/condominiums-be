@@ -17,19 +17,19 @@ module.exports = [
   //   },
   // },
 
-  {
-    name: 'strapi::security',
-    config: {
-      contentSecurityPolicy: {
-        directives: {
-          'connect-src': ["'self'", 'https:'],
-          'img-src': ["'self'", 'data:', 'blob:', `https://miniobucket.urbanpulse.app.br`],
-          'media-src': ["'self'", 'data:', 'blob:', `https://miniobucket.urbanpulse.app.br`],
-          upgradeInsecureRequests: null,
-        },
-      }
-    },
-  },
+  // {
+  //   name: 'strapi::security',
+  //   config: {
+  //     contentSecurityPolicy: {
+  //       directives: {
+  //         'connect-src': ["'self'", 'https:'],
+  //         'img-src': ["'self'", 'data:', 'blob:', `https://miniobucket.urbanpulse.app.br`],
+  //         'media-src': ["'self'", 'data:', 'blob:', `https://miniobucket.urbanpulse.app.br`],
+  //         upgradeInsecureRequests: null,
+  //       },
+  //     }
+  //   },
+  // },
   'strapi::cors',
   'strapi::poweredBy',
   'strapi::logger',
