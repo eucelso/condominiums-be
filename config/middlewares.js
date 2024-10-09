@@ -23,8 +23,23 @@ module.exports = [
         useDefaults: true,
         directives: {
           'connect-src': ["'self'", 'https:'],
-          'img-src': ["'self'", 'data:', 'blob:', `https://${process.env.MINIO_ENDPOINT}.s3.amazonaws.com`, "dl.airtable.com", "market-assets.strapi.io" ],
-          'media-src': ["'self'", 'data:', 'blob:', `https://${process.env.MINIO_ENDPOINT}.s3.amazonaws.com`, "dl.airtable.com", "market-assets.strapi.io" ],
+          'img-src': [
+            "'self'", 
+            'data:', 
+            'blob:', 
+            `https://${process.env.MINIO_ENDPOINT}`, 
+            "dl.airtable.com", 
+            "market-assets.strapi.io",
+            "cloudflare.com"
+          ],
+          'media-src': [
+            "'self'", 
+            'data:', 
+            'blob:', 
+            `https://${process.env.MINIO_ENDPOINT}`, 
+            "dl.airtable.com",
+            "market-assets.strapi.io"
+          ],
           upgradeInsecureRequests: null,
         },
       }

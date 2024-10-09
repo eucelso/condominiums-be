@@ -1,6 +1,6 @@
 module.exports = ({ env }) => ({
   'upload': {
-    provider: 'strapi-provider-upload-ts-minio',
+    provider: 'ts-minio',
     providerOptions: {
       accessKey: env('MINIO_ACCESS_KEY', "0HOCICVCQebuv4iO3RjI"),
       secretKey: env('MINIO_SECRET_KEY', "LmVeLXuNtjPNcBvvOd1IjkLTX6U4VynLyWCbdHOh"),
