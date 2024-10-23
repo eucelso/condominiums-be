@@ -939,7 +939,7 @@ export interface ApiCondOwnerCondOwner extends Schema.CollectionType {
     name: Attribute.String & Attribute.Required;
     email: Attribute.Email & Attribute.Required;
     cellphone: Attribute.String;
-    birthday: Attribute.Date & Attribute.Required;
+    birthday: Attribute.Date;
     cpf: Attribute.String & Attribute.Required;
     empresa: Attribute.Relation<
       'api::cond-owner.cond-owner',

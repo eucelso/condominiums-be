@@ -25,7 +25,7 @@
     },
     "birthday": {
       "type": "date",
-      "required": true
+      "required": false
     },
     "cpf": {
       "type": "string",
