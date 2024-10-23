@@ -87,6 +87,23 @@
     },
     "telephone": {
       "type": "string"
+    },
+    "Torre": {
+      "type": "string",
+      "required": true
+    },
+    "andar_e_sala": {
+      "type": "string",
+      "required": true
+    },
+    "sala_outra_torre": {
+      "type": "boolean"
+    },
+    "segunda_torre": {
+      "type": "string"
+    },
+    "segunda_sala_e_andar": {
+      "type": "string"
     }
   }
 }

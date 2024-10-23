@@ -906,6 +906,11 @@ export interface ApiCondCompanyCondCompany extends Schema.CollectionType {
     instagram: Attribute.String;
     cellphone: Attribute.String;
     telephone: Attribute.String;
+    Torre: Attribute.String & Attribute.Required;
+    andar_e_sala: Attribute.String & Attribute.Required;
+    sala_outra_torre: Attribute.Boolean;
+    segunda_torre: Attribute.String;
+    segunda_sala_e_andar: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
